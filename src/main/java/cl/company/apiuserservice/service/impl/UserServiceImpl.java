@@ -1,6 +1,6 @@
 package cl.company.apiuserservice.service.impl;
 
-import cl.company.apiuserservice.model.User;
+import cl.company.apiuserservice.model.Users;
 import cl.company.apiuserservice.repository.UserRepository;
 import cl.company.apiuserservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,27 +16,27 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> findAll() {
+    public List<Users> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public User findUser(Long id) {
+    public Users findUser(Long id) {
         if(userRepository.findById(id).isPresent()){
             return userRepository.findById(id).get();
         } else {
-            return new User();
+            return new Users();
         }
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public Users createUser(Users users) {
+        return userRepository.save(users);
     }
 
     @Override
-    public User updateUser(User user) {
-        return userRepository.save(user);
+    public Users updateUser(Users users) {
+        return userRepository.save(users);
     }
 
     @Override
