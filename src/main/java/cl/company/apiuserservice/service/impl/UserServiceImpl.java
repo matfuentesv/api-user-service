@@ -1,5 +1,6 @@
 package cl.company.apiuserservice.service.impl;
 
+import cl.company.apiuserservice.exception.ApiResponse;
 import cl.company.apiuserservice.model.Users;
 import cl.company.apiuserservice.repository.UserRepository;
 import cl.company.apiuserservice.service.UserService;
@@ -14,6 +15,16 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public ApiResponse login(String username, String password) {
+        final boolean existUser = userRepository.findByUserPassword(username,password).isPresent();
+        if(existUser){
+            return new ApiResponse("Usuario logeado",true);
+        }else {
+            return new ApiResponse("Usuario no logeado",true);
+        }
+    }
 
     @Override
     public List<Users> findAll() {
