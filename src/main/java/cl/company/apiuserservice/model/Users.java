@@ -30,10 +30,9 @@ public class Users {
     @NotNull(message = "No puede email un password nulo")
     private String password;
 
-    @Column(name = "role")
-    @NotBlank(message = "No puede role un password vacio")
-    @NotNull(message = "No puede role un password nulo")
-    private String role;
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
 
 
 }
