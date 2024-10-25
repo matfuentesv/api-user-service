@@ -36,7 +36,7 @@ public class UserController {
             log.log(Level.WARNING, "Fallo de inicio de sesión para el usuario: {0}", username);
         }
 
-        return ResponseEntity.ok(response);
+         return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/findAllUsers", produces = MediaType.APPLICATION_JSON_VALUE)
